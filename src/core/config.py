@@ -13,7 +13,6 @@ BASE_DIR = Path(__file__).resolve().parent
 # NAME & VERSION
 PROJECT_NAME = os.getenv("PROJECT_NAME")
 VERSION = os.getenv("VERSION")
-print(f"##############{PROJECT_NAME}")
 # POSTGRES SETTINGS
 POSTGRES_HOST: str = os.getenv("POSTGRES_HOST")
 POSTGRES_PORT: int = os.getenv("POSTGRES_PORT")
