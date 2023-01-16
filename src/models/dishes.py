@@ -1,10 +1,12 @@
-from sqlalchemy import Column, String, Integer, Numeric, ForeignKey
+from sqlalchemy import (Column, String,
+                        Integer, Numeric,
+                        ForeignKey)
 from sqlalchemy.orm import relationship
 
-from db.database import db
+from src.db.database import Base
 
 
-class DishesModel(db):
+class DishesModel(Base):
     __tablename__ = "dishes"
 
     id = Column(Integer,

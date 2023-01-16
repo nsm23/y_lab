@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 
 from api.schemas.menu_schema import MenuCreate
-from models.menu import MenuModel
+from src.models.menu import MenuModel
 
 
 def get_list_menu(db: Session):

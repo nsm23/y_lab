@@ -1,12 +1,14 @@
 import os
 from logging.config import fileConfig
 
-import dotenv
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
 
 from alembic import context
-from sqlmodel import SQLModel
+from src.models.menu import MenuModel
+from src.models.submenu import SubmenuModel
+from src.models.dishes import DishesModel
+from src.db.database import metadata
 
 #from core.config import DATABASE_URL
 
@@ -14,7 +16,12 @@ from sqlmodel import SQLModel
 # access to the values within the .ini file in use.
 config = context.config
 #config.set_main_option("sqlalchemy.url", DATABASE_URL)
-
+section = config.config_ini_section
+config.set_section_option(section, "POSTGRES_USER", os.getenv("POSTGRES_USER"))
+config.set_section_option(section, "POSTGRES_PASSWORD", os.getenv("POSTGRES_PASSWORD"))
+config.set_section_option(section, "POSTGRES_HOST", os.getenv("POSTGRES_HOST"))
+config.set_section_option(section, "POSTGRES_PORT", os.getenv("POSTGRES_PORT"))
+config.set_section_option(section, "POSTGRES_DB", os.getenv("POSTGRES_DB"))
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.
 if config.config_file_name is not None:
@@ -24,7 +31,7 @@ if config.config_file_name is not None:
 # for 'autogenerate' support
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
-target_metadata = SQLModel.metadata
+target_metadata = MenuModel.metadata
 
 # other values from the config, defined by the needs of env.py,
 # can be acquired:
@@ -46,7 +53,7 @@ def run_migrations_offline() -> None:
     """
     url = config.get_main_option("sqlalchemy.url")
     context.configure(
-        url=config.get_main_option("sqlalchemy.url"),
+        url=url,
         target_metadata=target_metadata,
         literal_binds=True,
         dialect_opts={"paramstyle": "named"},
@@ -71,7 +78,8 @@ def run_migrations_online() -> None:
 
     with connectable.connect() as connection:
         context.configure(
-            connection=connection, target_metadata=target_metadata
+            connection=connection, target_metadata=target_metadata,
+            compare_type=True
         )
 
         with context.begin_transaction():

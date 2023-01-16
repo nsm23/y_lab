@@ -1,10 +1,11 @@
-from sqlalchemy import Column, String, Integer, ForeignKey
+from sqlalchemy import (Column, String,
+                        Integer, ForeignKey)
 from sqlalchemy.orm import relationship
 
-from db.database import db
+from src.db.database import Base
 
 
-class SubmenuModel(db):
+class SubmenuModel(Base):
     __tablename__ = "submenu"
 
     id = Column(Integer,

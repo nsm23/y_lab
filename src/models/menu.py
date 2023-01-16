@@ -1,11 +1,11 @@
 from sqlalchemy import (Column, String,
-                        Integer)
+                        Integer,)
 from sqlalchemy.orm import relationship
 
-from db.database import db
+from src.db.database import Base
 
 
-class MenuModel(db):
+class MenuModel(Base):
     __tablename__ = "menus"
 
     id = Column(Integer,

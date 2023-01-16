@@ -1,9 +1,10 @@
 import uvicorn
-
 from fastapi import FastAPI
 
+from src.db.database import engine, Base
 from src.core import config
 
+Base.metadata.create_all(bind=engine)
 app = FastAPI(
     title=config.PROJECT_NAME,
     version=config.VERSION,

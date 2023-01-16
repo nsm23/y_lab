@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 
 from api.schemas.dishes_schema import DishesCreate
-from models.dishes import DishesModel
+from src.models.dishes import DishesModel
 from services.menu import get_menu_by_id
 from services.submenu import get_submenu_by_id
 
