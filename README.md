@@ -1,9 +1,9 @@
 # Учебный проект компании Ylab university
-# API для проекта Меню ресторана. Учебный проект Ylab. 
+API для проекта Меню ресторана. Учебный проект Ylab. 
 
 
-# Начало работы:
-1.* Склонируйте репозиторий `ylab_project`
+Начало работы:
+1.* Склонируйте репозиторий `y_lab`
 ```bash
 git@github.com:nsm23/y_lab.git
 ```
@@ -24,7 +24,7 @@ cd app/
 SQLALCHEMY_DATABASE_URL = "postgresql://user:password@host:port/dbname",
 где user, password - данные для подключения к базе данных, host:port - имя и порт сервера базы данных, dbname - название базы данных.
 ```
-* Запустите приложение
+6.* Запустите приложение
 ```bash
  uvicorn main:app --reload
 ```
