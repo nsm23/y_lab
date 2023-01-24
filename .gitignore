@@ -1,0 +1,9 @@
+/venv/
+__pycache__/
+*.code-workspace
+*.sqlite3
+.env
+media/
+*idea/
+/poetry.lock
+/pyproject.toml

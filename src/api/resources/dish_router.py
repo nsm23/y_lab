@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Depends, HTTPException
-from typing import List, Optional
+from typing import List
 from sqlalchemy.orm import Session
 from api.schemas.schemes import DishCreate, Dish, DishUpdate
 from db.database import get_db

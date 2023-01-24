@@ -1,9 +1,13 @@
+import os
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
-from core import config
 
-SQLALCHEMY_DATABASE_URL = config.DATABASE_URL
+SQLALCHEMY_DATABASE_URL = f"postgresql://{os.getenv('POSTGRES_USER', 'sergey')}" \
+                          f":{os.getenv('POSTGRES_PASSWORD', 2709)}" \
+                          f"@{os.getenv('POSTGRES_HOST', 'localhost')}" \
+                          f":{os.getenv('POSTGRES_PORT', 5432)}/" \
+                          f"{os.getenv('POSTGRES_DB', 'test_menu')}"
 
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
 
